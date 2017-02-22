@@ -24,7 +24,7 @@ class TeamDemoService
         $checkTeam = $this->model->checkteam($_SESSION['teamname']);
         if ($checkTeam){//修改项目数据
             if('private' == $data['data_type']){
-                $data['data'] = $this->coder($data['data'],$checkTeam['teamkey'],'encode');
+                $data['data'] = $this->coder($data['data'],$checkTeam[0]['teamkey'],'encode');
                 $this->model->updateData($data);
             }
             $this->model->updateData($data);

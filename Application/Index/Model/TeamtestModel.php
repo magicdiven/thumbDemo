@@ -72,13 +72,7 @@ class TeamtestModel extends Model
             WHERE `teamname`='$teamname'";
         $result = $this->db('DB_TEST',1)->query($sql);
 
-        $flag = FALSE;
-        if ($result) {
-            $flag = TRUE;
-        } else {
-            $flag = FALSE;
-        }
-        return $flag;
+        return $result;
     }
 
     /**
