@@ -23,8 +23,12 @@ class TeamDemoService
     {
         $checkTeam = $this->model->checkteam($_SESSION['teamname']);
         if ($checkTeam){//修改项目数据
-            $data['data'] = $this->coder($data['data'], $checkTeam['teamkey'], 'encode');
+            if('private' == $data['data_type']){
+                $data['data'] = $this->coder($data['data'],$checkTeam['teamkey'],'encode');
+                $this->model->updateData($data);
+            }
             $this->model->updateData($data);
+
         }else{//新增项目数据
             //数据加密
             if('private' == $data['data_type']){
